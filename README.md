@@ -4,7 +4,7 @@ This repo contain useful and necessary commands in docker
 
 export image
 
-origin : `docker save -o {image-name-optional:}.tar {image-name}`
+origin : `sudo docker save -o {image-name-optional:}.tar {image-name}`
 
-destination : `docker load < {image-name-optional:}.tar`
+destination : `sudo docker load < {image-name-optional:}.tar`
 <hr>
