@@ -10,6 +10,7 @@ destination : `sudo docker load < [OPTIONAL_IMAGE_NAME].tar`
 <hr>
 save changes (commit)
 <hr>
+
 `sudo docker ps -a` for getting the last container id
 
 `sudo docker commit [CONTAINER_ID] [NEW_IMAGE_NAME:TAG]`
