@@ -44,8 +44,13 @@ destination : `sudo docker load < [OPTIONAL_IMAGE_NAME].tar`
 `sudo docker rmi --force [IMAGE_NAME:TAG]` or `sudo docker rmi --force [IMAGE_ID]`
 <hr>
 <h2>remove container</h2>
+remove specific container 
 
-`sudo docker container rm {container_id} --force` 
+`sudo docker container rm {CONTAINER_ID} --force` or `sudo docker container kill --sigal=SIGTERM {CONTAINER_ID}`
+
+remove all stop containers
+
+`sudo docker prune`
 
 <hr>
 <h2>run with connecting all ports & use GPUs & use display & connect a volume</h2>
