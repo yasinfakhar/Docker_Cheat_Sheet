@@ -43,9 +43,23 @@ destination : `sudo docker load < [OPTIONAL_IMAGE_NAME].tar`
 
 `sudo docker rmi --force [IMAGE_NAME:TAG]` or `sudo docker rmi --force [IMAGE_ID]`
 <hr>
+<h2>remove container</h2>
+
+`sudo docker container rm {container_id} --force` 
+
+<hr>
 <h2>run with connecting all ports & use GPUs & use display & connect a volume</h2>
 
 `xhost +local:docker`
 
 `sudo docker run -it --gpus all  --net host -v "path_to_location_in_local_machine":"/resource" -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix [IMAGE_NAME:TAG]`
 <hr>
+<h2>define share volume</h2>
+
+`sudo docker volume create {folder_name}`
+
+`sudo docker run ... -v /{folder_name}:{path_to_shared_folder_inside_docker} ...`
+
+
+
+
