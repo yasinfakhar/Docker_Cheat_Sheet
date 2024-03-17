@@ -59,12 +59,19 @@ remove all stop containers
 
 `sudo docker run -it --gpus all  --net host -v "path_to_location_in_local_machine":"/resource" -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix [IMAGE_NAME:TAG]`
 <hr>
-<h2>define share volume</h2>
+<h2>shared permanent volume</h2>
 
 `sudo docker volume create {folder_name}`
 
 `sudo docker run ... -v /{folder_name}:{path_to_shared_folder_inside_docker} ...`
+<hr>
+<h2>list of volumes</h2>
 
+`sudo docker volume ls`
 
+note :‌ with --filter "dangling=true" you can get the list of volumes which are not connected to any docker
+<hr>
+<h2>inspect docker volume</h2>
 
+`sudo docker volume inspect {VOLUME_NAME}`
 
