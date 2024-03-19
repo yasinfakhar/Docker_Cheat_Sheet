@@ -69,7 +69,7 @@ remove all stop containers
 
 `sudo docker volume ls`
 
-note :‌ with --filter "dangling=true" you can get the list of volumes which are not connected to any docker
+note :‌ with --filter "dangling=true" you can get the list of volumes that are not connected to any docker
 <hr>
 <h2>inspect docker volume</h2>
 
@@ -131,5 +131,17 @@ services:
     depends_on:
      - "mongodb"
 
-```note :‌ we do not set network because docker-compose handle it automatically
+```
+note :‌ we do not set network because docker-compose handles it automatically
+
 <hr>
+<h2>run docker-compose file</h2>
+
+`sudo docker-compose -f {DOCKER_COMPOSE_FILE}.yaml up`
+
+use -d for detach mode (run in the background) : `sudo docker-compose -f {DOCKER_COMPOSE_FILE}.yaml up -d`
+<h2>stop and remove docker-compose </h2>
+
+`sudo docker-compose -f {DOCKER_COMPOSE_FILE}.yaml down`
+
+note : instead of  `up/down` use `start/stop` to make sure data is stored permanently 
