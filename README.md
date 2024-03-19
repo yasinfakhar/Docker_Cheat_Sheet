@@ -1,4 +1,4 @@
-# Docker_Cheat_Sheet
+# Docker basic commands
 This repo contains useful and necessary commands in docker
 
 <h2>Install Docker with GPUS enabled in Linux</h2>
@@ -75,3 +75,61 @@ note :‌ with --filter "dangling=true" you can get the list of volumes which ar
 
 `sudo docker volume inspect {VOLUME_NAME}`
 
+# Docker Compose
+
+<h2>docker-compose yaml file</h2>
+
+```
+version {DOCKER_COMPOSE_VERSION}
+
+services:
+  {CONTAINER_NAME}:
+    image: {IMAGE_NAME}:{TAG}
+    ports:
+      - {LOCAL_PORT}:{DOCKER_PORT}
+    environment:
+      - {ENV_NAME}={ENV_VALUE}
+      - {ENV_NAME}={ENV_VALUE}
+
+  {CONTAINER_NAME}:
+    image: {IMAGE_NAME}:{TAG}
+    ports:
+      - {LOCAL_PORT}:{DOCKER_PORT}
+    environment:
+      - {ENV_NAME}={ENV_VALUE}
+      - {ENV_NAME}={ENV_VALUE}
+```
+
+example 
+```
+version: '3.1'
+services:
+  my-app:
+    # build: .
+    image: docker-hub-user/image-name:image-tag
+    ports:
+     - 3000:3000
+    environment:
+     - MONGO_DB_USERNAME=${MONGO_ADMIN_USER}
+     - MONGO_DB_PWD=${MONGO_ADMIN_PASS}
+  mongodb:
+    image: mongo
+    ports:
+     - 27017:27017
+    environment:
+     - MONGO_INITDB_ROOT_USERNAME=${MONGO_ADMIN_USER}
+     - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ADMIN_PASS}
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+     - 8081:8081
+    environment:
+     - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_ADMIN_USER}
+     - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_ADMIN_PASS}
+     - ME_CONFIG_MONGODB_SERVER=mongodb
+    depends_on:
+     - "mongodb"
+
+```note :‌ we do not set network because docker-compose handle it automatically
+<hr>
